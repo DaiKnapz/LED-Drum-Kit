@@ -34,6 +34,7 @@
 #define TOM3_THRESHOLD  255
 #define BASS_THRESHOLD  255
 
+void checkAndLight(uint8_t inputPin, uint8_t outputPin, int threshold);
 void showAnalogRGB( const CRGB& rgb);
 
 void setup() {
@@ -59,6 +60,23 @@ void loop() {
   CRGB colour = CRGB::Red;   //Change as required, expansion to get this to work with a remote
 
   showAnalogRGB(colour);
+}
+
+void checkAndLight(uint8_t inputPin, uint8_t outputPin, int threshold) {
+  int inputValue = analogRead(inputPin);
+  int outputValue;
+  if (inputValue >= threshold)
+  {
+    //Maps input to brightness, with threshold being the minimum
+    outputValue = map(inputValue, threshold, 1023, 0, 255);
+  }
+  else
+  {
+    //Too small a vibration to trigger
+    outputValue = 0;
+  }
+
+  analogWrite(outputPin, outputValue);
 }
 //From FastLED analog example
 void showAnalogRGB( const CRGB& rgb)
