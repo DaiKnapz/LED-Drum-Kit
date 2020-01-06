@@ -60,6 +60,13 @@ void loop() {
   CRGB colour = CRGB::Red;   //Change as required, expansion to get this to work with a remote
 
   showAnalogRGB(colour);
+
+  //Check each drum in turn
+  checkAndLight(SNARE_IN, SNARE, SNARE_THRESHOLD);
+  checkAndLight(TOM1_IN, TOM1, TOM1_THRESHOLD);
+  checkAndLight(TOM2_IN, TOM2, TOM2_THRESHOLD);
+  checkAndLight(TOM3_IN, TOM3, TOM3_THRESHOLD);
+  checkAndLight(BASS_IN, BASS, BASS_THRESHOLD);
 }
 
 void checkAndLight(uint8_t inputPin, uint8_t outputPin, int threshold) {
@@ -78,6 +85,7 @@ void checkAndLight(uint8_t inputPin, uint8_t outputPin, int threshold) {
 
   analogWrite(outputPin, outputValue);
 }
+
 //From FastLED analog example
 void showAnalogRGB( const CRGB& rgb)
 {
