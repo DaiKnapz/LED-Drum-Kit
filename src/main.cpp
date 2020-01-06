@@ -28,7 +28,7 @@
 /*****************
  *   PARAMETERS  *
  *****************/
-#define SNARE_THRESHOLD 255     //Adjustable between 0-1023 depending on how hard hit
+#define SNARE_THRESHOLD 255     //Adjustable between 0-1023 depending on how hard the drum is hit
 #define TOM1_THRESHOLD  255
 #define TOM2_THRESHOLD  255
 #define TOM3_THRESHOLD  255
@@ -36,7 +36,22 @@
 
 
 void setup() {
-  // put your setup code here, to run once:
+  //PWM Pins
+  pinMode(RED_PIN, OUTPUT);
+  pinMode(GREEN_PIN, OUTPUT);
+  pinMode(BLUE_PIN, OUTPUT);
+  pinMode(SNARE, OUTPUT);
+  pinMode(TOM1, OUTPUT);
+  pinMode(TOM2, OUTPUT);
+  pinMode(TOM3, OUTPUT);
+  pinMode(BASS, OUTPUT);
+
+  //Analog Inputs
+  pinMode(SNARE_IN, INPUT);
+  pinMode(TOM1_IN, INPUT);
+  pinMode(TOM2_IN, INPUT);
+  pinMode(TOM3_IN, INPUT);
+  pinMode(BASS_IN, INPUT);
 }
 
 void loop() {
