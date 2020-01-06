@@ -34,6 +34,7 @@
 #define TOM3_THRESHOLD  255
 #define BASS_THRESHOLD  255
 
+void showAnalogRGB( const CRGB& rgb);
 
 void setup() {
   //PWM Pins
@@ -55,5 +56,14 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  CRGB colour = CRGB::Red;   //Change as required, expansion to get this to work with a remote
+
+  showAnalogRGB(colour);
+}
+//From FastLED analog example
+void showAnalogRGB( const CRGB& rgb)
+{
+  analogWrite(RED_PIN,   rgb.r );
+  analogWrite(GREEN_PIN, rgb.g );
+  analogWrite(BLUE_PIN,  rgb.b );
 }
